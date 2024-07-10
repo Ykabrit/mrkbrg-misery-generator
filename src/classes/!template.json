@@ -1,0 +1,18 @@
+{
+  "name": "",
+  "Strength": "3d6",
+  "Agility": "3d6",
+  "Presence": "3d6",
+  "Toughness": "3d6",
+  "HP": "[Toughness]+d8",
+  "silver": "2d6*10",
+  "omens": "d2",
+  "weapon": "d10",
+  "armor": "d4",
+  "originIntro": "",
+  "origin": [],
+  "classIntro": "",
+  "skill": {},
+  "basicSkills": {},
+  "additionalEquipment": []
+}
