@@ -14,7 +14,7 @@ const App = () => {
   ]);
 
   const char = new Character([]);
-  console.log(char.backstory.personality);
+  console.log(char);
 
   return (
     <Stack $gap={2} style={{ alignItems: 'center' }}>
