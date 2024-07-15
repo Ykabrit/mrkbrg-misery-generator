@@ -84,7 +84,7 @@ export const CharacterProvider = ({ children }) => {
     char.hp = char.toughness + roller.roll('d8').total;
     char.silver = roller.roll('2d6*10').total;
 
-    char.equipment = generateEquipment();
+    char.equipment = generateEquipment(char);
 
     return char;
   };

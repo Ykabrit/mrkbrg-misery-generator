@@ -31,7 +31,7 @@ export const rollAttributes = (
   });
 };
 
-export const generateEquipment = (standard = true) => {
+export const generateEquipment = (char, standard = true) => {
   // Roll for basic equipment.
   let equipment = [
     'Бурдюк',
@@ -71,14 +71,14 @@ export const generateEquipment = (standard = true) => {
       if (abilityReg.test(equip)) {
         equip = equip.replace(
           abilityReg,
-          (ability) => this[ability?.slice(1, -1)]
+          (ability) => char[ability.slice(1, -1)]
         );
       }
 
       if (formulaReg.test(equip)) {
         equip = equip.replace(
           formulaReg,
-          (formula) => roller.roll(formula?.slice(1, -1)).total
+          (formula) => roller.roll(formula.slice(1, -1)).total
         );
       }
 
