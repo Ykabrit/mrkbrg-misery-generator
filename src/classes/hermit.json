@@ -1,9 +1,9 @@
 {
   "name": "Эзотерический отшельник",
-  "strength": "3d6-2",
-  "agility": "3d6",
-  "presence": "3d6+2",
-  "toughness": "3d6",
+  "attributes": {
+    "strength": "3d6-2",
+    "presence": "3d6+2"
+  },
   "hp": "[toughness]+d4",
   "silver": "1d6*10",
   "omens": "d4",

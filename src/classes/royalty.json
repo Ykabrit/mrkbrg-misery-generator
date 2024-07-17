@@ -1,9 +1,6 @@
 {
   "name": "Падшая Знать",
-  "strength": "3d6",
-  "agility": "3d6",
-  "presence": "3d6",
-  "toughness": "3d6",
+  "attributes": {},
   "hp": "[toughness]+d6",
   "silver": "4d6*10",
   "omens": "d2",

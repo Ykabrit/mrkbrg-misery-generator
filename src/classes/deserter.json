@@ -1,9 +1,10 @@
 {
   "name": "Клыкастый дезертир",
-  "strength": "3d6+2",
-  "agility": "3d6-1",
-  "presence": "3d6-1",
-  "toughness": "3d6",
+  "attributes": {
+    "strength": "3d6+2",
+    "agility": "3d6-1",
+    "presence": "3d6-1"
+  },
   "hp": "[toughness]+d10",
   "silver": "2d6*10",
   "omens": "d2",

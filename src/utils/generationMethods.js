@@ -10,14 +10,16 @@ const roller = new DiceRoller();
 
 export const rollAttributes = (
   standard = true,
-  strengthRoll = '3d6',
-  agilityRoll = '3d6',
-  presenceRoll = '3d6',
-  toughnessRoll = '3d6'
+  {
+    strength = '3d6',
+    agility = '3d6',
+    presence = '3d6',
+    toughness = '3d6',
+  } = {}
 ) => {
   const rolls = standard
     ? _.shuffle(['3d6', '3d6', '4d6d1', '4d6d1'])
-    : [strengthRoll, agilityRoll, presenceRoll, toughnessRoll];
+    : [strength, agility, presence, toughness];
 
   return roller.roll(...rolls).map((roll) => {
     let result = roll.total;

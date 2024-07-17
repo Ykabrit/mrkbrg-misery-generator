@@ -56,7 +56,7 @@ export const CharacterProvider = ({ children }) => {
     if (!classNames.length) {
       char = { ...char, ...generateClasslessCharacter() };
     } else {
-      // TODO
+      char = { ...char, ...(await generateClassCharacter()) };
     }
 
     char.backstory = {
@@ -73,6 +73,18 @@ export const CharacterProvider = ({ children }) => {
       char.backstory.personality[1] = char.backstory.personality[1].slice(7);
 
     setCharacter(char);
+  };
+
+  const generateClassCharacter = async () => {
+    const char = {};
+
+    char.className = _.sample(classNames);
+    const classInfo = await import(`../classes/${char.className}.json`);
+
+    [char.strength, char.agility, char.presence, char.toughness] =
+      rollAttributes(false, classInfo.attributes);
+
+    return char;
   };
 
   const generateClasslessCharacter = () => {
