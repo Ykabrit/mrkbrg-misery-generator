@@ -3,22 +3,26 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import _ from 'underscore';
 import namesTable from '../rolltables/names.json';
 import backstories from '../rolltables/backstory.json';
-import { generateEquipment, rollAttributes } from '../utils/generationMethods';
+import {
+  generateEquipment,
+  parseAbilityInString,
+  rollAttributes,
+} from '../utils/generationMethods';
 
 const characterContext = createContext();
 
 const roller = new DiceRoller();
 
 export const CharacterProvider = ({ children }) => {
-  // const [classNames, setClassNames] = useState([
-  //   'deserter',
-  //   'herbmaster',
-  //   'heretic',
-  //   'hermit',
-  //   'royalty',
-  //   'scum',
-  // ]);
-  const [classNames, setClassNames] = useState([]);
+  const [classNames, setClassNames] = useState([
+    'deserter',
+    'herbmaster',
+    'heretic',
+    'hermit',
+    'royalty',
+    'scum',
+  ]);
+  // const [classNames, setClassNames] = useState([]);
   const [character, setCharacter] = useState({
     name: '',
     className: '',
@@ -28,6 +32,7 @@ export const CharacterProvider = ({ children }) => {
     toughness: 0,
     hp: 0,
     silver: 0,
+    omens: '',
     equipment: [],
     backstory: {
       personality: '',
@@ -77,12 +82,41 @@ export const CharacterProvider = ({ children }) => {
 
   const generateClassCharacter = async () => {
     const char = {};
+    const classInfo = await import(`../classes/${_.sample(classNames)}.json`);
 
-    char.className = _.sample(classNames);
-    const classInfo = await import(`../classes/${char.className}.json`);
+    char.className = classInfo.name;
+
+    if (classInfo.decoctions) {
+      char.decoctions = classInfo.decoctions;
+    }
 
     [char.strength, char.agility, char.presence, char.toughness] =
       rollAttributes(false, classInfo.attributes);
+
+    char.hp = roller.roll(parseAbilityInString(classInfo.hp, char)).total;
+    char.silver = roller.roll(classInfo.silver).total;
+    char.omens = `${roller.roll(classInfo.omens).total} (${classInfo.omens})`;
+
+    char.equipment = generateEquipment(
+      char,
+      false,
+      classInfo.weapon,
+      classInfo.armor,
+      classInfo.additionalEquipment
+    );
+
+    [char.originIntro, char.origin, char.classIntro] = [
+      classInfo.originIntro,
+      _.sample(classInfo.origin),
+      classInfo.classIntro,
+    ];
+
+    const specialSkill = _.sample(_.pairs(classInfo.skill));
+
+    char.skills = {
+      ...classInfo.basicSkills,
+      [specialSkill[0]]: specialSkill[1],
+    };
 
     return char;
   };
@@ -95,6 +129,7 @@ export const CharacterProvider = ({ children }) => {
 
     char.hp = char.toughness + roller.roll('d8').total;
     char.silver = roller.roll('2d6*10').total;
+    char.omens = `${roller.roll('d2').total} (d2)`;
 
     char.equipment = generateEquipment(char);
 

@@ -4,20 +4,6 @@ import { Stack } from './components/Stack';
 import useCharacter from './context/CharacterProvider';
 
 const App = () => {
-  // const [fetchedClass, setFetchedClass] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchClass = async (className) => {
-  //     setFetchedClass(await import(`./classes/${className}.json`));
-  //   };
-
-  //   fetchClass('scum');
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(fetchedClass);
-  // }, [fetchedClass]);
-
   const {
     classNames,
     character,

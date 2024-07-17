@@ -8,8 +8,8 @@
   "hp": "[toughness]+d10",
   "silver": "2d6*10",
   "omens": "d2",
-  "weapon": "d10",
-  "armor": "d4",
+  "weapon": null,
+  "armor": null,
   "originIntro": "Воспоминания",
   "origin": [
     "Сгоревшая дотла изба в Саркаше. Твой дом?",

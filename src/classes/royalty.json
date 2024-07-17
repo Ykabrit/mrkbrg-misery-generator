@@ -4,8 +4,8 @@
   "hp": "[toughness]+d6",
   "silver": "4d6*10",
   "omens": "d2",
-  "weapon": "d8",
-  "armor": "d3",
+  "weapon": "8",
+  "armor": "3",
   "originIntro": "Всё было хорошо, пока",
   "origin": [
     "твой дворец в Пустоши не превратился в песок.",
