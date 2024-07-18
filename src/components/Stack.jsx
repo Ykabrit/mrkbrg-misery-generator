@@ -4,5 +4,5 @@ export const Stack = styled.div`
   display: flex;
   flex-direction: ${(props) =>
     props.direction === 'horizontal' ? 'row' : 'column'};
-  gap: ${(props) => props.$gap || 0}rem;
+  gap: ${(props) => props.$gap * 5 || 0}px;
 `;
