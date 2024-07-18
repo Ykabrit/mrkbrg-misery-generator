@@ -87,7 +87,10 @@ export const generateEquipment = (
 
 export const parseAbilityInString = (str, char) => {
   if (abilityReg.test(str)) {
-    return str.replace(abilityReg, (ability) => char[ability.slice(1, -1)]);
+    return str.replace(
+      abilityReg,
+      (ability) => char.abilities[ability.slice(1, -1)]
+    );
   }
   return str;
 };

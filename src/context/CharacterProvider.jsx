@@ -1,5 +1,6 @@
 import { DiceRoller } from '@dice-roller/rpg-dice-roller';
 import { createContext, useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'underscore';
 import namesTable from '../rolltables/names.json';
 import backstories from '../rolltables/backstory.json';
@@ -81,7 +82,7 @@ export const CharacterProvider = ({ children }) => {
   };
 
   const generateClassCharacter = async () => {
-    const char = {};
+    const char = { abilities: {} };
     const classInfo = await import(`../classes/${_.sample(classNames)}.json`);
 
     char.className = classInfo.name;
@@ -90,8 +91,12 @@ export const CharacterProvider = ({ children }) => {
       char.decoctions = classInfo.decoctions;
     }
 
-    [char.strength, char.agility, char.presence, char.toughness] =
-      rollAttributes(false, classInfo.attributes);
+    [
+      char.abilities.strength,
+      char.abilities.agility,
+      char.abilities.presence,
+      char.abilities.toughness,
+    ] = rollAttributes(false, classInfo.attributes);
 
     char.hp = roller.roll(parseAbilityInString(classInfo.hp, char)).total;
     char.silver = roller.roll(classInfo.silver).total;
@@ -122,12 +127,16 @@ export const CharacterProvider = ({ children }) => {
   };
 
   const generateClasslessCharacter = () => {
-    const char = {};
+    const char = { abilities: {} };
 
-    [char.strength, char.agility, char.presence, char.toughness] =
-      rollAttributes();
+    [
+      char.abilities.strength,
+      char.abilities.agility,
+      char.abilities.presence,
+      char.abilities.toughness,
+    ] = rollAttributes();
 
-    char.hp = char.toughness + roller.roll('d8').total;
+    char.hp = char.abilities.toughness + roller.roll('d8').total;
     char.silver = roller.roll('2d6*10').total;
     char.omens = `${roller.roll('d2').total} (d2)`;
 
@@ -158,7 +167,9 @@ export const CharacterProvider = ({ children }) => {
   );
 };
 
-CharacterProvider.propTypes;
+CharacterProvider.propTypes = {
+  children: PropTypes.element,
+};
 
 const useCharacter = () => {
   return useContext(characterContext);
