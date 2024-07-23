@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import { Stack } from './Stack';
 
 const AbilityScoreText = styled(FlexText).attrs(() => ({
-  $size: 20,
+  $size: 30,
+  $monospace: true,
 }))`
-  font-family: monospace;
   margin-left: auto;
 `;
 
 const AbilityNameText = styled(FlexText).attrs(() => ({
-  $size: 20,
+  $size: 30,
+  $monospace: true,
 }))``;
 
 const Stats = ({ abilities }) => {

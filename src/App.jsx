@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import './app.css';
 import { Stack } from './components/Stack';
 import useCharacter from './context/CharacterProvider';
+import BasicResources from './components/BasicResources';
+import rerolls from './rolltables/rerolls.json';
+import FlexText from './components/FlexText';
+import Stats from './components/Stats';
 
 const App = () => {
   const {
@@ -29,8 +33,19 @@ const App = () => {
   }
 
   return (
-    <Stack $gap={2} style={{ alignItems: 'center' }}>
-      <div style={{ fontSize: '60px' }}>МРК БРГ ГЕН</div>
+    <Stack $gap={10} style={{ alignItems: 'center' }}>
+      <Stack $gap={2} style={{ alignItems: 'center' }}>
+        <div style={{ fontSize: '80px' }}>{character.name}</div>
+        {character.className ? (
+          <div style={{ fontSize: '40px' }}>{character.className}</div>
+        ) : null}
+      </Stack>
+      <BasicResources
+        hp={character.hp}
+        silver={character.silver}
+        omens={character.omens}
+      />
+      <Stats abilities={character.abilities} />
     </Stack>
   );
 };

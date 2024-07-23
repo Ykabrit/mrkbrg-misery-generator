@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
 const FlexText = styled.span`
-  font-size: ${(props) => props.$size || 11}px;
+  font-size: ${({ $size }) => $size || 16}px;
   width: fit-content;
+  font-weight: ${({ $bold }) => ($bold && 'bold') || 'normal'};
+  ${({ $monospace }) =>
+    $monospace &&
+    `
+    font-family: monospace;
+  `}
 `;
 
 export default FlexText;

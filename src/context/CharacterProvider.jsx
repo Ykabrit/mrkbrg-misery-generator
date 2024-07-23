@@ -15,14 +15,9 @@ const characterContext = createContext();
 const roller = new DiceRoller();
 
 export const CharacterProvider = ({ children }) => {
-  const [classNames, setClassNames] = useState([
-    'deserter',
-    'herbmaster',
-    'heretic',
-    'hermit',
-    'royalty',
-    'scum',
-  ]);
+  const [classNames, setClassNames] = useState(
+    JSON.parse(import.meta.env.VITE_CLASSNAMES)
+  );
   // const [classNames, setClassNames] = useState([]);
   const [character, setCharacter] = useState({
     name: '',
