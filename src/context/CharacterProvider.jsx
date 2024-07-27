@@ -10,7 +10,7 @@ import {
   rollAttributes,
 } from '../utils/generationMethods';
 
-const characterContext = createContext();
+const CharacterContext = createContext();
 
 const roller = new DiceRoller();
 
@@ -147,7 +147,7 @@ export const CharacterProvider = ({ children }) => {
   }, [character]);
 
   return (
-    <characterContext.Provider
+    <CharacterContext.Provider
       value={{
         classNames,
         character,
@@ -158,7 +158,7 @@ export const CharacterProvider = ({ children }) => {
       }}
     >
       {children}
-    </characterContext.Provider>
+    </CharacterContext.Provider>
   );
 };
 
@@ -170,5 +170,4 @@ const useCharacter = () => {
   return useContext(characterContext);
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default useCharacter;
