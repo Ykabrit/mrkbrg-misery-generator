@@ -16,7 +16,7 @@ const roller = new DiceRoller();
 
 export const CharacterProvider = ({ children }) => {
   const [classNames, setClassNames] = useState(
-    JSON.parse(import.meta.env.VITE_CLASSNAMES)
+    JSON.parse(import.meta.env.VITE_CLASSNAMES),
   );
   // const [classNames, setClassNames] = useState([]);
   const [character, setCharacter] = useState({
@@ -102,7 +102,7 @@ export const CharacterProvider = ({ children }) => {
       false,
       classInfo.weapon,
       classInfo.armor,
-      classInfo.additionalEquipment
+      classInfo.additionalEquipment,
     );
 
     [char.originIntro, char.origin, char.classIntro] = [
@@ -167,7 +167,8 @@ CharacterProvider.propTypes = {
 };
 
 const useCharacter = () => {
-  return useContext(characterContext);
+  return useContext(CharacterContext);
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default useCharacter;
