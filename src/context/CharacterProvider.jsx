@@ -50,6 +50,8 @@ export const CharacterProvider = ({ children }) => {
   };
 
   const generateCharacter = async () => {
+    setGenerationLoading(true);
+
     let char = {
       name: _.sample(namesTable),
     };
@@ -59,6 +61,8 @@ export const CharacterProvider = ({ children }) => {
     } else {
       char = { ...char, ...(await generateClassCharacter()) };
     }
+
+    if (char.hp < 1) char.hp = 1;
 
     char.backstory = {
       personality: _.sample(backstories.personality, 2),
