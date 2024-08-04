@@ -35,6 +35,9 @@ export const CharacterProvider = ({ children }) => {
       body: '',
       habit: '',
       past: '',
+      originIntro: '',
+      origin: '',
+      classIntro: '',
     },
     skills: {},
   });
@@ -54,6 +57,7 @@ export const CharacterProvider = ({ children }) => {
 
     let char = {
       name: _.sample(namesTable),
+      backstory: {},
     };
 
     if (!classNames.length) {
@@ -69,6 +73,7 @@ export const CharacterProvider = ({ children }) => {
       body: _.sample(backstories.body),
       habit: _.sample(backstories.habit),
       past: _.sample(backstories.past),
+      ...char.backstory,
     };
 
     if (
@@ -81,13 +86,13 @@ export const CharacterProvider = ({ children }) => {
   };
 
   const generateClassCharacter = async () => {
-    const char = { abilities: {} };
+    const char = { abilities: {}, backstory: {} };
     const classInfo = await import(`../classes/${_.sample(classNames)}.json`);
 
     char.className = classInfo.name;
 
     if (classInfo.decoctions) {
-      char.decoctions = classInfo.decoctions;
+      char.backstory.decoctions = classInfo.decoctions;
     }
 
     [
@@ -109,7 +114,11 @@ export const CharacterProvider = ({ children }) => {
       classInfo.additionalEquipment,
     );
 
-    [char.originIntro, char.origin, char.classIntro] = [
+    [
+      char.backstory.originIntro,
+      char.backstory.origin,
+      char.backstory.classIntro,
+    ] = [
       classInfo.originIntro,
       _.sample(classInfo.origin),
       classInfo.classIntro,
