@@ -92,7 +92,7 @@ export const CharacterProvider = ({ children }) => {
     char.className = classInfo.name;
 
     if (classInfo.decoctions) {
-      char.backstory.decoctions = classInfo.decoctions;
+      char.decoctions = classInfo.decoctions;
     }
 
     [
