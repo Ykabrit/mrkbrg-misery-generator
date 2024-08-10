@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import useCharacter from './context/CharacterProvider';
 import rerolls from './rolltables/rerolls.json';
 import _ from 'underscore';
@@ -7,6 +7,7 @@ import Backstory from './components/Backstory';
 import Abilities from './components/Abilities';
 import Skills from './components/Skills';
 import Equipment from './components/Equipment';
+import SkillsContainer from './components/SkillsContainer';
 
 const App = () => {
   const {
@@ -74,29 +75,22 @@ const App = () => {
             silver={character.silver}
             omens={character.omens}
           />
-          <Backstory
-            classN={character.className}
-            backstory={character.backstory}
-          />
-
-          <div className="flex max-w-3xl flex-col gap-4 text-wrap">
-            <h3 className="font-serif text-2xl font-medium text-mbyellow sm:text-3xl md:text-4xl">
-              Что ты умеешь
-            </h3>
-            <div className="flex flex-col items-center">
-              <Abilities abilities={character.abilities} />
-              {character.className && (
-                <Skills
-                  skills={character.skills}
-                  decoctions={character.decoctions || null}
-                />
-              )}
-            </div>
-          </div>
-          <div className="flex w-screen max-w-3xl flex-col gap-4 text-wrap">
-            <h3 className="font-serif text-2xl font-medium text-mbyellow sm:text-3xl md:text-4xl">
-              Что ты имеешь
-            </h3>
+          <div className="flex max-w-full flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+            <Backstory
+              classN={character.className}
+              backstory={character.backstory}
+            />
+            <SkillsContainer>
+              <>
+                <Abilities abilities={character.abilities} />
+                {character.className && (
+                  <Skills
+                    skills={character.skills}
+                    decoctions={character.decoctions || null}
+                  />
+                )}
+              </>
+            </SkillsContainer>
             <Equipment equipment={character.equipment} />
           </div>
         </>
