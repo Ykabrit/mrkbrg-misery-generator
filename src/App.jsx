@@ -14,8 +14,7 @@ const App = () => {
     classNames,
     character,
     generationLoading,
-    addClass,
-    removeClass,
+    toggleClass,
     generateCharacter,
   } = useCharacter();
 

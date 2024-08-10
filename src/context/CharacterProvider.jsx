@@ -43,13 +43,12 @@ export const CharacterProvider = ({ children }) => {
   });
   const [generationLoading, setGenerationLoading] = useState(true);
 
-  const addClass = (className) => {
+  const toggleClass = (className) => {
     if (!classNames.includes(className)) {
       setClassNames([...classNames, className]);
+    } else {
+      setClassNames(classNames.filter((el) => el !== className));
     }
-  };
-  const removeClass = (className) => {
-    setClassNames(classNames.filter((el) => el !== className));
   };
 
   const generateCharacter = async () => {
@@ -165,8 +164,7 @@ export const CharacterProvider = ({ children }) => {
         classNames,
         character,
         generationLoading,
-        addClass,
-        removeClass,
+        toggleClass,
         generateCharacter,
       }}
     >
