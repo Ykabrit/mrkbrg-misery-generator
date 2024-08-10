@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import useCharacter from './context/CharacterProvider';
 import rerolls from './rolltables/rerolls.json';
 import _ from 'underscore';
