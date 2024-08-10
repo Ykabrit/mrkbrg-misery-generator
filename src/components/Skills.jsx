@@ -8,7 +8,7 @@ const Skills = ({ skills, decoctions }) => {
           key={`${key}-skill-render`}
           className="flex flex-col items-center gap-1"
         >
-          <div className="font-bold text-mbpink">{key}</div>
+          <div className="text-center font-bold text-mbpink">{key}</div>
           <div className="w-fit">{skills[key]}</div>
         </div>
       ))}
