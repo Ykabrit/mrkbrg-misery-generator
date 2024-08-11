@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const Backstory = ({ backstory, classN }) => {
   return (
     <div className="flex max-w-3xl flex-col gap-4 text-wrap">
-      <h3 className="font-serif text-2xl font-medium text-mbyellow sm:text-3xl md:text-4xl">
+      <h3 className="font-serif text-2xl font-bold text-mbyellow sm:text-3xl md:text-4xl">
         Твоя пустая жизнь
       </h3>
       {classN && (
