@@ -92,6 +92,14 @@ const App = () => {
             </SkillsContainer>
             <Equipment equipment={character.equipment} />
           </div>
+          <footer className="mt-5 min-h-10 w-screen border-t-2 border-t-white pt-5 text-center font-mono text-sm">
+            <span className="font-bold text-mbyellow">ГЕНЕРАТОР УБОЖЕСТВ</span>{' '}
+            is an independent production by{' '}
+            <span className="font-bold text-mbyellow">Yanibou</span> and is not
+            affiliated with Ockult Örtmästare Games or Stockholm Kartell. It is
+            published under the MÖRK BORG Third Party License. MÖRK BORG is
+            copyright Ockult Örtmästare Games and Stockholm Kartell.
+          </footer>
         </>
       )}
     </div>
