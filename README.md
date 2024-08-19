@@ -1,8 +1,7 @@
-# React + Vite
+# ГЕНЕРАТОР УБОЖЕСТВ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Генератор персонажей для MÖRK BORG, используя базовые правила.
 
-Currently, two official plugins are available:
+# LICENCE
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**ГЕНЕРАТОР УБОЖЕСТВ** is an independent production by **Yanibou** and is not affiliated with Ockult Örtmästare Games or Stockholm Kartell. It is published under the MÖRK BORG Third Party License. MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.
