@@ -29,6 +29,10 @@ const App = () => {
   }, [character]);
 
   useEffect(() => {
+    setInsult(_.sample(rerolls));
+  }, [character]);
+
+  useEffect(() => {
     generateCharacter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -58,7 +62,7 @@ const App = () => {
                   character.backstory.habit.startsWith('Нигилист') && (
                     <span className="text-mbpink">НИГИЛИСТ</span>
                   )) ||
-                  _.sample(rerolls)}
+                  insult}
               </span>
               , сделать нового?
             </div>
