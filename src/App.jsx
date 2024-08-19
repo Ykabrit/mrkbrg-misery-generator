@@ -40,12 +40,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (character.name) {
-      console.log(character);
-    }
-  }, [character]);
-
-  useEffect(() => {
     setInsult(_.sample(rerolls));
   }, [character]);
 
