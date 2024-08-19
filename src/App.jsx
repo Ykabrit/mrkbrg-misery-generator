@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useCharacter from './context/CharacterProvider';
 import rerolls from './rolltables/rerolls.json';
 import _ from 'underscore';
@@ -8,8 +8,12 @@ import Abilities from './components/Abilities';
 import Skills from './components/Skills';
 import Equipment from './components/Equipment';
 import SkillsContainer from './components/SkillsContainer';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 const App = () => {
+  const [showClassSelection, setShowClassSelection] = useState(false);
+  const [insult, setInsult] = useState('');
+
   const {
     classNames,
     character,
@@ -17,6 +21,10 @@ const App = () => {
     toggleClass,
     generateCharacter,
   } = useCharacter();
+
+  const handleClassSelectionClose = () => {
+    setShowClassSelection(false);
+  };
 
   const handleGenerateNewCharacter = () => {
     generateCharacter();
@@ -96,7 +104,13 @@ const App = () => {
             </SkillsContainer>
             <Equipment equipment={character.equipment} />
           </div>
-          <footer className="mt-5 min-h-10 w-screen border-t-2 border-t-white pt-5 text-center font-mono text-sm">
+          <button
+            onClick={() => setShowClassSelection(true)}
+            className="border border-white bg-white p-2 font-mono font-bold text-black active:bg-black active:text-white"
+          >
+            Хочу иллюзию выбора
+          </button>
+          <footer className="mt-5 min-h-10 w-screen border-t-2 border-t-white p-2 pt-5 text-center font-mono text-sm">
             <span className="font-bold text-mbyellow">ГЕНЕРАТОР УБОЖЕСТВ</span>{' '}
             is an independent production by{' '}
             <span className="font-bold text-mbyellow">Yanibou</span> and is not
@@ -104,6 +118,16 @@ const App = () => {
             published under the MÖRK BORG Third Party License. MÖRK BORG is
             copyright Ockult Örtmästare Games and Stockholm Kartell.
           </footer>
+          <SwipeableDrawer
+            open={showClassSelection}
+            onClose={handleClassSelectionClose}
+          >
+            <div className="flex h-full w-72 flex-col items-center gap-4 bg-zinc-950 p-4 text-white">
+              <h4 className="text-center font-serif text-xl font-bold sm:text-2xl md:text-3xl">
+                Каким ты видишь своё отродье?
+              </h4>
+            </div>
+          </SwipeableDrawer>
         </>
       )}
     </div>
