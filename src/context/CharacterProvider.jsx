@@ -51,6 +51,14 @@ export const CharacterProvider = ({ children }) => {
     }
   };
 
+  const fillClasses = () => {
+    setClassNames(JSON.parse(import.meta.env.VITE_CLASSNAMES));
+  };
+
+  const emptyClasses = () => {
+    setClassNames([]);
+  };
+
   const generateCharacter = async () => {
     setGenerationLoading(true);
 
@@ -165,6 +173,8 @@ export const CharacterProvider = ({ children }) => {
         character,
         generationLoading,
         toggleClass,
+        fillClasses,
+        emptyClasses,
         generateCharacter,
       }}
     >

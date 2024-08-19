@@ -9,6 +9,9 @@ import Skills from './components/Skills';
 import Equipment from './components/Equipment';
 import SkillsContainer from './components/SkillsContainer';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import classlist from './classes/classlist.json';
+
+const allClassNames = JSON.parse(import.meta.env.VITE_CLASSNAMES);
 
 const App = () => {
   const [showClassSelection, setShowClassSelection] = useState(false);
@@ -19,15 +22,21 @@ const App = () => {
     character,
     generationLoading,
     toggleClass,
+    fillClasses,
+    emptyClasses,
     generateCharacter,
   } = useCharacter();
 
-  const handleClassSelectionClose = () => {
-    setShowClassSelection(false);
-  };
-
   const handleGenerateNewCharacter = () => {
     generateCharacter();
+  };
+
+  const handleAllClassesToggle = (e) => {
+    if (e.target.checked) {
+      fillClasses();
+    } else {
+      emptyClasses();
+    }
   };
 
   useEffect(() => {
@@ -120,12 +129,34 @@ const App = () => {
           </footer>
           <SwipeableDrawer
             open={showClassSelection}
-            onClose={handleClassSelectionClose}
+            onClose={() => setShowClassSelection(false)}
+            onOpen={() => setShowClassSelection(true)}
+            disableSwipeToOpen
           >
-            <div className="flex h-full w-72 flex-col items-center gap-4 bg-zinc-950 p-4 text-white">
-              <h4 className="text-center font-serif text-xl font-bold sm:text-2xl md:text-3xl">
+            <div className="flex h-full w-80 flex-col gap-4 bg-zinc-950 p-4 font-mono text-white">
+              <h4 className="mb-8 self-center text-center font-serif text-2xl font-bold text-mbpink md:text-3xl">
                 Каким ты видишь своё отродье?
               </h4>
+              <label className="mb-2 font-bold">
+                <input
+                  className="mr-2"
+                  type="checkbox"
+                  checked={classNames.length === allClassNames.length}
+                  onChange={handleAllClassesToggle}
+                />
+                Все классы
+              </label>
+              {allClassNames.map((classN) => (
+                <label key={`${classN}-class-toggle`}>
+                  <input
+                    className="mr-2"
+                    type="checkbox"
+                    checked={classNames.includes(classN)}
+                    onChange={() => toggleClass(classN)}
+                  />
+                  {classlist[classN]}
+                </label>
+              ))}
             </div>
           </SwipeableDrawer>
         </>
