@@ -139,7 +139,7 @@ const App = () => {
               </h4>
               <label className="mb-2 font-bold">
                 <input
-                  className="mr-2"
+                  className="mr-2 text-mbpink focus:ring-mbpink"
                   type="checkbox"
                   checked={classNames.length === allClassNames.length}
                   onChange={handleAllClassesToggle}
@@ -149,7 +149,7 @@ const App = () => {
               {allClassNames.map((classN) => (
                 <label key={`${classN}-class-toggle`}>
                   <input
-                    className="mr-2"
+                    className="mr-2 text-mbpink focus:ring-mbpink"
                     type="checkbox"
                     checked={classNames.includes(classN)}
                     onChange={() => toggleClass(classN)}
