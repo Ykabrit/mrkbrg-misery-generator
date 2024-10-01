@@ -1,4 +1,4 @@
-var Jn=Object.defineProperty;var jn=(s,t,e)=>t in s?Jn(s,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):s[t]=e;var C=(s,t,e)=>jn(s,typeof t!="symbol"?t+"":t,e);import{e as kn}from"./mathjs-CscKSDzz.js";/**
+var Jn=Object.defineProperty;var jn=(s,t,e)=>t in s?Jn(s,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):s[t]=e;var C=(s,t,e)=>jn(s,typeof t!="symbol"?t+"":t,e);import{e as kn}from"./mathjs-B9nlZ6KG.js";/**
  * @dice-roller/rpg-dice-roller - An advanced JS based dice roller that can roll various types of dice and modifiers, along with mathematical equations.
  * 
  * @version 5.5.0
